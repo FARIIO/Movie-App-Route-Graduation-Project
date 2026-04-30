@@ -91,3 +91,15 @@ The UI is designed with a **dark theme + yellow accent** for a cinematic experie
 - **Backend:** Firebase (Auth + Firestore)
 - **API:** TMDB (The Movie Database)
 - **Design:** Figma
+
+---
+
+## 👨‍💻 Team Members
+
+- Jana Abdelwahed
+- Ahmed Hassan
+- Arafa Mohamed
+- Fares Ahmed
+
+---
+
