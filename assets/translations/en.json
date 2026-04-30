@@ -1,0 +1,35 @@
+{
+
+  "logout": "Logout",
+  "login_to_your_account": "Login to your account",
+  "enter_your_email": "Enter your email",
+  "enter_your_password": "Enter your password",
+  "forget_password": "Forget Password?",
+  "login": "Login",
+  "dont_have_account": "Don’t Have  Account ?",
+  "sign_up": "SignUp",
+  "or": "OR",
+  "login_with_google": "Login with Google",
+  "create_account": "Create  Account ",
+  "enter_your_name": "Enter your name",
+  "confirm_password": "Confirm  password",
+  "already_have_account": "Already Have  Account?",
+  "sign_up_with_google": "Sign up with Google",
+  "reset_password": "Reset password",
+  "email": "Email",
+  "password": "Password",
+  "name": "Name",
+  "phone_number": "Phone Number",
+  "verify_email": "Verify Email",
+  "register": "Register",
+  "avatar": "Avatar",
+  "create_one": "Create One",
+  "pick_avatar": "Pick Avatar",
+  "delete_account": "Delete Account",
+  "update_data": "Update Data"
+
+
+
+
+
+}

@@ -1,0 +1,29 @@
+class AppAssets {
+  static const String onBoardingImageTwo = "assets/images/onBoarding_two.png";
+  static const String onBoardingImageThree = "assets/images/onBoarding_three.png";
+  static const String onBoardingImageFour = "assets/images/onBoarding_four.png";
+  static const String onBoardingImageFive = "assets/images/onBoarding_five.png";
+  static const String onBoardingImageSix = "assets/images/onBoarding_six.png";
+  static const String movePoster = "assets/images/move_poster.png";
+  static const String googlePic = "assets/images/google.png";
+  static const String avatar1 = "assets/images/avatar1.png";
+  static const String avatar2 = "assets/images/avatar2.png";
+  static const String avatar3 = "assets/images/avatar3.png";
+  static const String iconName = "assets/images/icon_name.png";
+  static const String iconEmail = "assets/images/icon_email.png";
+  static const String iconPassword = "assets/images/icon_password.png";
+  static const String iconPhone = "assets/images/icon_phone.png";
+  static const String forgetPassword = "assets/images/forget_password.png";
+  static const String americanFlag = "assets/images/american_flag.png";
+  static const String egyptFlag = "assets/images/egypt_flag.png";
+  static const String logo = "assets/images/logo.png";
+  static const String av1 = "assets/images/av1.png";
+  static const String av2 = "assets/images/av2.png";
+  static const String av3 = "assets/images/av3.png";
+  static const String av4 = "assets/images/av4.png";
+  static const String av5 = "assets/images/av5.png";
+  static const String av6 = "assets/images/av6.png";
+  static const String av7 = "assets/images/av7.png";
+  static const String av8 = "assets/images/av8.png";
+  static const String av9 = "assets/images/av9.png";
+}
