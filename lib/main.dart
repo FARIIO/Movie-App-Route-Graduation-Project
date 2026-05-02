@@ -48,7 +48,7 @@ class MovieApp extends StatelessWidget{
         AppRoutes.onBoardingScreen : (context) => OnBoardingScreen(),
         AppRoutes.loginScreen : (context) => LoginScreen(),
         AppRoutes.registerScreen : (context) => RegisterScreen(),
-        AppRoutes.forgetScreen : (context) => ForgetScreen(),
+        AppRoutes.forgetScreen : (context) => ForgetPassword(),
         AppRoutes.updateScreen : (context) => UpdateScreen(),
       },
     );
