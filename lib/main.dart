@@ -5,6 +5,7 @@ import 'package:movie_app_graduation_project_route/ui/screens/auth/forget_screen
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/screens/login_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/register_screen/screens/register_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/update_screen/screen/update_screen.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/home_screen/home.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/initial_screen/initial_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,21 +18,17 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
   bool isFirstTime = prefs.getBool("isFirstTime") ?? true;
   runApp(
-      EasyLocalization(
-          supportedLocales: [
-            Locale('en'),
-            Locale('ar'),
-          ],
-          path: 'assets/translations',
-          fallbackLocale: Locale('en'),
-          startLocale: Locale('en'),
-          child: MovieApp(isFirstTime: isFirstTime)
-      )
+    EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('ar')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en'),
+      startLocale: Locale('en'),
+      child: MovieApp(isFirstTime: isFirstTime),
+    ),
   );
 }
 
-class MovieApp extends StatelessWidget{
-
+class MovieApp extends StatelessWidget {
   final bool isFirstTime;
   const MovieApp({required this.isFirstTime});
 
@@ -47,14 +44,14 @@ class MovieApp extends StatelessWidget{
           : AppRoutes.loginScreen,
       theme: AppTheme.lightTheme,
       routes: {
-        AppRoutes.initialScreen : (context) => InitialScreen(),
-        AppRoutes.onBoardingScreen : (context) => OnBoardingScreen(),
-        AppRoutes.loginScreen : (context) => LoginScreen(),
-        AppRoutes.registerScreen : (context) => RegisterScreen(),
-        AppRoutes.forgetScreen : (context) => ForgetPassword(),
-        AppRoutes.updateScreen : (context) => UpdateScreen(),
+        AppRoutes.initialScreen: (context) => InitialScreen(),
+        AppRoutes.onBoardingScreen: (context) => OnBoardingScreen(),
+        AppRoutes.loginScreen: (context) => LoginScreen(),
+        AppRoutes.registerScreen: (context) => RegisterScreen(),
+        AppRoutes.forgetScreen: (context) => ForgetScreen(),
+        AppRoutes.updateScreen: (context) => UpdateScreen(),
+        AppRoutes.home: (context) => Home(),
       },
     );
   }
-
 }
