@@ -10,6 +10,8 @@ import 'package:movie_app_graduation_project_route/ui/screens/initial_screen/ini
 import 'package:movie_app_graduation_project_route/ui/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/utils/app_theme.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -40,6 +42,7 @@ class MovieApp extends StatelessWidget {
       initialRoute: isFirstTime
           ? AppRoutes.initialScreen
           : AppRoutes.loginScreen,
+      theme: AppTheme.lightTheme,
       routes: {
         AppRoutes.initialScreen: (context) => InitialScreen(),
         AppRoutes.onBoardingScreen: (context) => OnBoardingScreen(),
