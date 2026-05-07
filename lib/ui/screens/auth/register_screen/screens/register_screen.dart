@@ -66,6 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         else if(state is RegisterSuccessState){
 
           ShowDialogUtils.pop(context: context);
+          ShowDialogUtils.showSuccess(context: context, message: "Register Success");
 
         }
         else if (state is AuthFailureState){
