@@ -54,7 +54,7 @@ class MovieApp extends StatelessWidget {
       // initialRoute: isFirstTime
       //     ? AppRoutes.initialScreen
       //     : AppRoutes.loginScreen,
-      initialRoute: AppRoutes.registerScreen,
+      initialRoute: AppRoutes.loginScreen,
       theme: AppTheme.lightTheme,
       routes: {
         AppRoutes.initialScreen: (context) => InitialScreen(),
