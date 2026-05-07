@@ -12,7 +12,20 @@
           "package_name": "com.example.movie_app_graduation_project_route"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1021013769973-3ul09sl4ug64i7j40f8ej4d66naiurk5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_app_graduation_project_route",
+            "certificate_hash": "28bdf79a4422c63e09bc1c935c1322788968e4d9"
+          }
+        },
+        {
+          "client_id": "1021013769973-bv5kt17k7676esm5nddp7qejg06er486.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBjFeUPBx9biFhyVz4GPcokSxbC7BVzLR4"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021013769973-bv5kt17k7676esm5nddp7qejg06er486.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1021013769973-s2af7obe247t7jjcovcvbdee16ged7p2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieAppGraduationProjectRoute"
+              }
+            }
+          ]
         }
       }
     }
