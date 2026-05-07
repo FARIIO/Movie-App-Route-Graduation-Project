@@ -49,7 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is AuthLoadingStat){
           return  ShowDialogUtils.showLoading(context: context);
         }
-        else if(state is LoginSuccessState){
+        else if(state is LoginSuccessState ||
+            state is GoogleSuccessState){
 
           ShowDialogUtils.pop(context: context);
           Navigator.pushReplacementNamed(
@@ -192,8 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                     BlocProvider.of<AuthCubit>(context).signInWithGoogle();
+                    onPressed: () async{
+                   await  BlocProvider.of<AuthCubit>(context).signInWithGoogle();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.yellowColor,

@@ -77,8 +77,23 @@ class AuthCubit extends Cubit<AuthState> {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
       emit(GoogleSuccessState());
-    } catch (e) {
-      emit(AuthFailureState(errorMessage:  "Something went wrong"));
+    }on FirebaseAuthException catch (e) {
+
+      emit(
+        AuthFailureState(
+          errorMessage: e.message ?? "Auth Error",
+        ),
+      );
+
+    }
+    catch (e) {
+
+      emit(
+        AuthFailureState(
+          errorMessage: e.toString(),
+        ),
+      );
+
     }
   }
 }
