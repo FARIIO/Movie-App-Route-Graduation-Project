@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app_graduation_project_route/core/utils/app_routes.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/auth/cubit/auth_cubit.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/forget_screen/screens/forget_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/screens/login_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/register_screen/screens/register_screen.dart';
@@ -8,6 +10,8 @@ import 'package:movie_app_graduation_project_route/ui/screens/auth/update_screen
 import 'package:movie_app_graduation_project_route/ui/screens/initial_screen/initial_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'core/utils/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,9 +32,10 @@ void main() async {
   );
 }
 
-class MovieApp extends StatelessWidget{
+class MovieApp extends StatelessWidget {
 
   final bool isFirstTime;
+
   const MovieApp({required this.isFirstTime});
 
   @override
@@ -40,16 +45,26 @@ class MovieApp extends StatelessWidget{
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      initialRoute: isFirstTime
-          ? AppRoutes.initialScreen
-          : AppRoutes.loginScreen,
+      // initialRoute: isFirstTime
+      //     ? AppRoutes.initialScreen
+      //     : AppRoutes.loginScreen,
+      initialRoute: AppRoutes.loginScreen,
+      theme: AppTheme.lightTheme,
       routes: {
-        AppRoutes.initialScreen : (context) => InitialScreen(),
-        AppRoutes.onBoardingScreen : (context) => OnBoardingScreen(),
-        AppRoutes.loginScreen : (context) => LoginScreen(),
-        AppRoutes.registerScreen : (context) => RegisterScreen(),
-        AppRoutes.forgetScreen : (context) => ForgetScreen(),
-        AppRoutes.updateScreen : (context) => UpdateScreen(),
+        AppRoutes.initialScreen: (context) => InitialScreen(),
+        AppRoutes.onBoardingScreen: (context) => OnBoardingScreen(),
+        AppRoutes.loginScreen: (context) =>
+            BlocProvider(
+              create: (context) => AuthCubit(),
+              child: LoginScreen(),
+            ),
+        AppRoutes.registerScreen: (context) =>
+            BlocProvider(
+              create: (context) => AuthCubit(),
+              child: RegisterScreen(),
+            ),
+        AppRoutes.forgetScreen: (context) => ForgetScreen(),
+        AppRoutes.updateScreen: (context) => UpdateScreen(),
       },
     );
   }
