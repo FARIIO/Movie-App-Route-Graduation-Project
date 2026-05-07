@@ -21,8 +21,23 @@ class AuthCubit extends Cubit<AuthState> {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       emit(RegisterSuccessState());
-    }  catch (e) {
-  emit(AuthFailureState(errorMessage:  "Something went wrong"));
+    }  on FirebaseAuthException catch (e) {
+
+      emit(
+        AuthFailureState(
+          errorMessage: e.message ?? "Auth Error",
+        ),
+      );
+
+    }
+    catch (e) {
+
+      emit(
+        AuthFailureState(
+          errorMessage: e.toString(),
+        ),
+      );
+
     }
   }
 

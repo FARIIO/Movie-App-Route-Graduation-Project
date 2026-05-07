@@ -193,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      //todo: not done
+                     BlocProvider.of<AuthCubit>(context).signInWithGoogle();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.yellowColor,

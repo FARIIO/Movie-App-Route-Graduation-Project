@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app_graduation_project_route/core/utils/app_routes.dart';
@@ -13,10 +14,14 @@ import 'package:movie_app_graduation_project_route/ui/screens/onboarding_screen/
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/utils/app_theme.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   final prefs = await SharedPreferences.getInstance();
   bool isFirstTime = prefs.getBool("isFirstTime") ?? true;
   runApp(
@@ -49,7 +54,7 @@ class MovieApp extends StatelessWidget {
       // initialRoute: isFirstTime
       //     ? AppRoutes.initialScreen
       //     : AppRoutes.loginScreen,
-      initialRoute: AppRoutes.loginScreen,
+      initialRoute: AppRoutes.registerScreen,
       theme: AppTheme.lightTheme,
       routes: {
         AppRoutes.initialScreen: (context) => InitialScreen(),
