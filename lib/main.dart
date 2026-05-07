@@ -7,6 +7,7 @@ import 'package:movie_app_graduation_project_route/ui/screens/auth/forget_screen
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/screens/login_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/register_screen/screens/register_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/update_screen/screen/update_screen.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/home_screen/home.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/initial_screen/initial_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,8 +64,9 @@ class MovieApp extends StatelessWidget {
               create: (context) => AuthCubit(),
               child: RegisterScreen(),
             ),
-        AppRoutes.forgetScreen: (context) => ForgetScreen(),
+        AppRoutes.forgetScreen: (context) => ForgetPassword(),
         AppRoutes.updateScreen: (context) => UpdateScreen(),
+        AppRoutes.home: (context) => Home(),
       },
     );
   }

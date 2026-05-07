@@ -51,10 +51,20 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         else if(state is LoginSuccessState){
 
+          ShowDialogUtils.pop(context: context);
           Navigator.pushReplacementNamed(
             context,
-            AppRoutes.updateScreen,
+            AppRoutes.home,
           );
+        }
+        else if (state is AuthFailureState){
+          ShowDialogUtils.pop(context: context);
+
+          ShowDialogUtils.showError(
+            context: context,
+            errorMessage: state.errorMessage,
+          );
+
         }
       },
       child: SafeArea(
@@ -126,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ElevatedButtonWidget(
                     onpPressed: () {
                       if (formKey.currentState!.validate()) {
-                        // todo: not done
+                       BlocProvider.of<AuthCubit>(context).login(email: emailController.text, password: passwordController.text);
                       }
                     },
                     text: "login".tr(),
