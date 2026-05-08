@@ -40,14 +40,14 @@ class MovieApp extends StatelessWidget {
       locale: context.locale,
       initialRoute: isFirstTime
           ? AppRoutes.initialScreen
-          : AppRoutes.loginScreen,
+          : AppRoutes.home,
       theme: AppTheme.lightTheme,
       routes: {
         AppRoutes.initialScreen: (context) => InitialScreen(),
         AppRoutes.onBoardingScreen: (context) => OnBoardingScreen(),
         AppRoutes.loginScreen: (context) => LoginScreen(),
         AppRoutes.registerScreen: (context) => RegisterScreen(),
-        // AppRoutes.forgetScreen: (context) => ForgetScreen(),
+        AppRoutes.forgetScreen: (context) => ForgetPassword(),
         AppRoutes.updateScreen: (context) => UpdateScreen(),
         AppRoutes.home: (context) => Home(),
       },

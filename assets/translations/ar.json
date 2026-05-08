@@ -25,5 +25,14 @@
   "create_one": "أنشئ حسابًا",
   "pick_avatar": "اختر صورة شخصية",
   "delete_account": "حذف الحساب",
-  "update_data": "تحديث البيانات"
+  "update_data": "تحديث البيانات",
+  "browse" : "تصفح",
+  "action": "أكشن",
+  "adventure" : "مغامرة",
+  "animation": "أنيميشن",
+  "biography": "سيرة ذاتية",
+  "comedy": "كوميدي",
+  "crime" : "جريمة",
+  "documentary": "وثائقي",
+  "drama" : "دراما"
 }
