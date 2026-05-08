@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app_graduation_project_route/core/utils/app_routes.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/auth/cubit/auth_cubit.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/forget_screen/screens/forget_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/screens/login_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/register_screen/screens/register_screen.dart';
@@ -11,25 +14,34 @@ import 'package:movie_app_graduation_project_route/ui/screens/onboarding_screen/
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/utils/app_theme.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   final prefs = await SharedPreferences.getInstance();
   bool isFirstTime = prefs.getBool("isFirstTime") ?? true;
   runApp(
-    EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('ar')],
-      path: 'assets/translations',
-      fallbackLocale: Locale('en'),
-      startLocale: Locale('en'),
-      child: MovieApp(isFirstTime: isFirstTime),
-    ),
+      EasyLocalization(
+          supportedLocales: [
+            Locale('en'),
+            Locale('ar'),
+          ],
+          path: 'assets/translations',
+          fallbackLocale: Locale('en'),
+          startLocale: Locale('en'),
+          child: MovieApp(isFirstTime: isFirstTime)
+      )
   );
 }
 
 class MovieApp extends StatelessWidget {
+
   final bool isFirstTime;
+
   const MovieApp({required this.isFirstTime});
 
   @override
@@ -39,19 +51,29 @@ class MovieApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      initialRoute: isFirstTime
-          ? AppRoutes.initialScreen
-          : AppRoutes.loginScreen,
+      // initialRoute: isFirstTime
+      //     ? AppRoutes.initialScreen
+      //     : AppRoutes.loginScreen,
+      initialRoute: AppRoutes.loginScreen,
       theme: AppTheme.lightTheme,
       routes: {
         AppRoutes.initialScreen: (context) => InitialScreen(),
         AppRoutes.onBoardingScreen: (context) => OnBoardingScreen(),
-        AppRoutes.loginScreen: (context) => LoginScreen(),
-        AppRoutes.registerScreen: (context) => RegisterScreen(),
-        AppRoutes.forgetScreen: (context) => ForgetScreen(),
+        AppRoutes.loginScreen: (context) =>
+            BlocProvider(
+              create: (context) => AuthCubit(),
+              child: LoginScreen(),
+            ),
+        AppRoutes.registerScreen: (context) =>
+            BlocProvider(
+              create: (context) => AuthCubit(),
+              child: RegisterScreen(),
+            ),
+        AppRoutes.forgetScreen: (context) => ForgetPassword(),
         AppRoutes.updateScreen: (context) => UpdateScreen(),
         AppRoutes.home: (context) => Home(),
       },
     );
   }
+
 }
