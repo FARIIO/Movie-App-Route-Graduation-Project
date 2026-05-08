@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/search_tab/search_tab.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/text_style.dart';
@@ -99,13 +100,6 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
-  }
-}
-
-class SearchTab extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Text("SearchTab"));
   }
 }
 
