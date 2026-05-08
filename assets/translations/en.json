@@ -26,10 +26,14 @@
   "create_one": "Create One",
   "pick_avatar": "Pick Avatar",
   "delete_account": "Delete Account",
-  "update_data": "Update Data"
-
-
-
-
-
+  "update_data": "Update Data",
+  "browse" : "Browse",
+  "action": "Action",
+  "adventure" : "Adventure",
+  "animation": "Animation",
+  "biography": "Biography",
+  "comedy": "Comedy",
+  "crime" : "Crime",
+  "documentary": "Documentary",
+  "drama" : "Drama"
 }

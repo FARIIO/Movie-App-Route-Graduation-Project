@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/browse_tab/browse_tab.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/search_tab/search_tab.dart';
 
 import '../../../core/utils/app_colors.dart';
@@ -100,13 +101,6 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
-  }
-}
-
-class BrowseTab extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Text("BrowseTab"));
   }
 }
 
