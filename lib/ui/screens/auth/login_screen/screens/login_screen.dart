@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButtonWidget(
                   onpPressed: () {
                     if (formKey.currentState!.validate()) {
-                      // todo: not done
+                      Navigator.pushReplacementNamed(context, AppRoutes.home);
                     }
                   },
                   text: "login".tr(),

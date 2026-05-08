@@ -26,4 +26,12 @@ class AppAssets {
   static const String av7 = "assets/images/av7.png";
   static const String av8 = "assets/images/av8.png";
   static const String av9 = "assets/images/av9.png";
+  static const String movie1917 = "assets/images/1917.png";
+  static const String blackWidow = "assets/images/blackwidow.jpg";
+  static const String blackWidow2 = "assets/images/blakwidow2.jpg";
+  static const String captain = "assets/images/Captain.jpg";
+  static const String docStrange = "assets/images/doctor_strange.jpg";
+  static const String ironMan = "assets/images/ironman.jpg";
+  static const String darkKnight = "assets/images/thedarkknight.jpg";
+  static const String searchIcon = "assets/images/search_icon.svg";
 }
