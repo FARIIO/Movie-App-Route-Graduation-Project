@@ -108,8 +108,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButtonWidget(
                   onpPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.pushReplacementNamed(context, AppRoutes.home);
+                    if (mounted) {
+                      Navigator.of(
+                        context,
+                      ).pushReplacementNamed(AppRoutes.home);
                     }
                   },
                   text: "login".tr(),

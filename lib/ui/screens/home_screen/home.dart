@@ -33,6 +33,15 @@ class _HomeState extends State<Home> {
           right: MediaQuery.of(context).size.width * 0.05,
           bottom: MediaQuery.of(context).padding.bottom + 10,
         ),
+<<<<<<< feat/home/home-tab
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.4),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+=======
       ),
     );
   }
@@ -154,6 +163,7 @@ class ProfileTab extends StatelessWidget {
               child: TabBarView(
                 children: [_buildEmptyState(), _buildHistoryGrid()],
               ),
+>>>>>>> develop
             ),
           ],
         ),
