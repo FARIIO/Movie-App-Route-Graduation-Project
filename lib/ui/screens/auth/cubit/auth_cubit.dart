@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ class AuthCubit extends Cubit<AuthState> {
    Future<void> register({
     required String email,
     required String password,
+    required String name,
   }) async {
      emit(AuthLoadingStat());
 
@@ -20,6 +22,8 @@ class AuthCubit extends Cubit<AuthState> {
 
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      await credential.user?.updateDisplayName(name);
+      await credential.user?.reload();
       emit(RegisterSuccessState());
     }  on FirebaseAuthException catch (e) {
 

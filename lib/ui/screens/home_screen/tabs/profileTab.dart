@@ -9,6 +9,10 @@ class ProfileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String userName =
+        FirebaseAuth.instance.currentUser?.displayName ??
+        FirebaseAuth.instance.currentUser?.email ??
+        "User";
     return SafeArea(
       child: DefaultTabController(
         length: 2,
@@ -27,7 +31,7 @@ class ProfileTab extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "John Safwat",
+                        userName,
                         style: AppTextStyle.regular20Weight.copyWith(
                           fontWeight: FontWeight.w700,
                           color: AppColors.whiteColor,
