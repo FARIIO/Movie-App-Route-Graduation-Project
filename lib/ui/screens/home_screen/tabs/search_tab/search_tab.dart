@@ -4,6 +4,7 @@ import 'package:movie_app_graduation_project_route/core/utils/app_assets.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/widgets/custom_text_field.dart';
 
 import '../../home.dart';
+import '../../moviePoster.dart';
 
 class SearchTab extends StatelessWidget{
   List<String> moviePosters = [

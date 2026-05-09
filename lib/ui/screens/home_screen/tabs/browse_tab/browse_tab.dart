@@ -3,6 +3,7 @@ import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/b
 
 import '../../../../../core/utils/app_assets.dart';
 import '../../home.dart';
+import '../../moviePoster.dart';
 
 class BrowseTab extends StatelessWidget{
 
