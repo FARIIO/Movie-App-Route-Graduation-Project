@@ -3,66 +3,47 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-   Future<void> register({
+  Future<void> register({
     required String email,
     required String password,
     required String name,
   }) async {
-     emit(AuthLoadingStat());
-
-
+    emit(AuthLoadingStat());
 
     try {
-
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       await credential.user?.updateDisplayName(name);
       await credential.user?.reload();
       emit(RegisterSuccessState());
-    }  on FirebaseAuthException catch (e) {
-
-      emit(
-        AuthFailureState(
-          errorMessage: e.message ?? "Auth Error",
-        ),
-      );
-
-    }
-    catch (e) {
-
-      emit(
-        AuthFailureState(
-          errorMessage: e.toString(),
-        ),
-      );
-
+    } on FirebaseAuthException catch (e) {
+      emit(AuthFailureState(errorMessage: e.message ?? "Auth Error"));
+    } catch (e) {
+      emit(AuthFailureState(errorMessage: e.toString()));
     }
   }
 
-   Future<void> login({
-    required String email,
-    required String password,
-  }) async {
-     emit(AuthLoadingStat());
+  Future<void> login({required String email, required String password}) async {
+    emit(AuthLoadingStat());
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       emit(LoginSuccessState());
-    }  catch (e) {
-      emit(AuthFailureState(errorMessage:  "Something went wrong"));
+    } catch (e) {
+      emit(AuthFailureState(errorMessage: "Something went wrong"));
     }
   }
 
-   Future<void> signInWithGoogle() async {
-     emit(AuthLoadingStat());
+  Future<void> signInWithGoogle() async {
+    emit(AuthLoadingStat());
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -81,23 +62,10 @@ class AuthCubit extends Cubit<AuthState> {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
       emit(GoogleSuccessState());
-    }on FirebaseAuthException catch (e) {
-
-      emit(
-        AuthFailureState(
-          errorMessage: e.message ?? "Auth Error",
-        ),
-      );
-
-    }
-    catch (e) {
-
-      emit(
-        AuthFailureState(
-          errorMessage: e.toString(),
-        ),
-      );
-
+    } on FirebaseAuthException catch (e) {
+      emit(AuthFailureState(errorMessage: e.message ?? "Auth Error"));
+    } catch (e) {
+      emit(AuthFailureState(errorMessage: e.toString()));
     }
   }
 }
