@@ -118,8 +118,6 @@ Future<void> verifyEmail(String email) async {
   }
 }
 
-// 2. Logic for "Update Profile"
-// This matches the logic for Phase 2 deadline (9/5/2026)
 Future<void> updateProfile({
   required String token,
   required String name,
@@ -146,4 +144,7 @@ Future<void> updateProfile({
   } catch (e) {
     emit(AuthError("Failed to update profile. Try again later."));
   }
+}
+
+class AuthSuccess {
 }
