@@ -49,7 +49,9 @@ class ProfileTab extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoutes.updateScreen);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.yellowColor,
                         shape: RoundedRectangleBorder(

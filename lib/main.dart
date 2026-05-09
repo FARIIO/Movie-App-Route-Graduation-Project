@@ -14,6 +14,7 @@ import 'core/utils/app_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp();
   final prefs = await SharedPreferences.getInstance();
   bool isFirstTime = prefs.getBool("isFirstTime") ?? true;
   runApp(
@@ -22,7 +23,10 @@ void main() async {
       path: 'assets/translations',
       fallbackLocale: Locale('en'),
       startLocale: Locale('en'),
-      child: MovieApp(isFirstTime: isFirstTime),
+      child: BlocProvider<AuthCubit>(
+        create: (context) => AuthCubit(),
+        child: MovieApp(isFirstTime: isFirstTime),
+      ),
     ),
   );
 }
@@ -40,7 +44,7 @@ class MovieApp extends StatelessWidget {
       locale: context.locale,
       initialRoute: isFirstTime
           ? AppRoutes.initialScreen
-          : AppRoutes.home,
+          : AppRoutes.loginScreen,
       theme: AppTheme.lightTheme,
       routes: {
         AppRoutes.initialScreen: (context) => InitialScreen(),
