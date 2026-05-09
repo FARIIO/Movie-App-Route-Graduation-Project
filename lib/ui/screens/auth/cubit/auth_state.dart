@@ -14,3 +14,7 @@ final class AuthFailureState extends AuthState {
   String errorMessage;
   AuthFailureState({required this.errorMessage});
 }
+class AuthSuccessState extends AuthState {
+  final String message;
+  AuthSuccessState({required this.message});
+}
