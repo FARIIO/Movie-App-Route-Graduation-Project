@@ -97,3 +97,53 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 }
+
+// 1. Logic for "Verify Email" (Forgot Password)
+// This matches the "Verify Email" button in your UI
+Future<void> verifyEmail(String email) async {
+  emit(AuthLoading());
+  try {
+    final response = await Dio().post(
+      "https://route-ecommerce.onrender.com/api/v1/auth/forgotPasswords",
+      data: {"email": email},
+    );
+
+    if (response.statusCode == 200) {
+      emit(AuthSuccess("Verification code sent to your email successfully."));
+    } else {
+      emit(AuthError(response.data['message'] ?? "User not found."));
+    }
+  } catch (e) {
+    emit(AuthError("Connection error. Please check your internet."));
+  }
+}
+
+// 2. Logic for "Update Profile"
+// This matches the logic for Phase 2 deadline (9/5/2026)
+Future<void> updateProfile({
+  required String token,
+  required String name,
+  required String phone,
+}) async {
+  emit(AuthLoading());
+  try {
+    final response = await Dio().put(
+      "https://route-ecommerce.onrender.com/api/v1/users/updateMe/",
+      data: {
+        "name": name,
+        "phone": phone,
+      },
+      options: Options(
+        headers: {"token": token},
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      emit(AuthSuccess("Profile data updated successfully!"));
+    } else {
+      emit(AuthError(response.data['errors']?[0]['msg'] ?? "Update failed."));
+    }
+  } catch (e) {
+    emit(AuthError("Failed to update profile. Try again later."));
+  }
+}
