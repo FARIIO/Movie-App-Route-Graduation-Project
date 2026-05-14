@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app_graduation_project_route/core/api/api_service.dart';
+import 'package:movie_app_graduation_project_route/features/home/presentation/manager/home_cubit.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/browse_tab/browse_tab.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/search_tab/search_tab.dart';
 
@@ -15,12 +18,22 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> tabs = [
-    const HomeTab(),
-    SearchTab(),
-    BrowseTab(),
-    ProfileTab(),
-  ];
+
+  late final List<Widget> tabs;
+
+  @override
+  void initState() {
+    super.initState();
+    tabs = [
+      BlocProvider(
+        create: (context) => HomeCubit(ApiService())..fetchHomeMovies(),
+        child: const HomeTab(),
+      ),
+      SearchTab(),
+      BrowseTab(),
+      ProfileTab(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +51,6 @@ class _HomeState extends State<Home> {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.4),
-              blurRadius: 10,
               offset: const Offset(0, 4),
             ),
           ],
