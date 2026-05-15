@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app_graduation_project_route/core/utils/app_routes.dart';
+import 'package:movie_app_graduation_project_route/ui/screens/auth/forget_screen/screens/forget_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/screens/login_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/register_screen/screens/register_screen.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/update_screen/screen/update_screen.dart';
