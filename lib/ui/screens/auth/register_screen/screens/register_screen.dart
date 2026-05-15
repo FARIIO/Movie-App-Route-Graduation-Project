@@ -58,25 +58,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
       AppAssets.avatar3,
     ];
     SizeConfig.init(context);
-    return  BlocListener<AuthCubit, AuthState>(
+    return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoadingStat){
-          return  ShowDialogUtils.showLoading(context: context);
-        }
-        else if(state is RegisterSuccessState){
-
+        if (state is AuthLoadingStat) {
+          return ShowDialogUtils.showLoading(context: context);
+        } else if (state is RegisterSuccessState) {
           ShowDialogUtils.pop(context: context);
-          ShowDialogUtils.showSuccess(context: context, message: "Register Success");
-
-        }
-        else if (state is AuthFailureState){
+          ShowDialogUtils.showSuccess(
+            context: context,
+            message: "Register Success",
+          );
+        } else if (state is AuthFailureState) {
           ShowDialogUtils.pop(context: context);
 
           ShowDialogUtils.showError(
             context: context,
             errorMessage: state.errorMessage,
           );
-
         }
       },
       child: SafeArea(
@@ -190,7 +188,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ElevatedButtonWidget(
                     onpPressed: () {
                       if (formKey.currentState!.validate()) {
-                        BlocProvider.of<AuthCubit>(context).register(email: emailController.text, password: passwordController.text);
+                        BlocProvider.of<AuthCubit>(context).register(
+                          email: emailController.text,
+                          password: passwordController.text,
+                          name: nameController.text,
+                        );
                       }
                     },
                     text: "create_account".tr(),
@@ -210,8 +212,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         onPressed: () {
-                          Navigator.of(context).pushNamed(AppRoutes
-                              .loginScreen);
+                          Navigator.of(
+                            context,
+                          ).pushNamed(AppRoutes.loginScreen);
                         },
                         child: Text(
                           "login".tr(),

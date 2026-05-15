@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/text_style.dart';
 import '../moviePoster.dart';
 
@@ -9,6 +11,10 @@ class ProfileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String userName =
+        FirebaseAuth.instance.currentUser?.displayName ??
+        FirebaseAuth.instance.currentUser?.email ??
+        "User";
     return SafeArea(
       child: DefaultTabController(
         length: 2,
@@ -27,7 +33,7 @@ class ProfileTab extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "John Safwat",
+                        userName,
                         style: AppTextStyle.regular20Weight.copyWith(
                           fontWeight: FontWeight.w700,
                           color: AppColors.whiteColor,
@@ -49,7 +55,9 @@ class ProfileTab extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoutes.updateScreen);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.yellowColor,
                         shape: RoundedRectangleBorder(

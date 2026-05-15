@@ -19,20 +19,21 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
 
-  late final List<Widget> tabs;
+  final List<Widget> tabs = [
+    const HomeTab(),
+    SearchTab(),
+    BrowseTab(),
+    ProfileTab(),
+  ];
 
-  @override
-  void initState() {
-    super.initState();
-    tabs = [
-      BlocProvider(
-        create: (context) => HomeCubit(ApiService())..fetchHomeMovies(),
-        child: const HomeTab(),
+  BottomNavigationBarItem _buildNavItem(String iconPath) {
+    return BottomNavigationBarItem(
+      icon: Padding(
+        padding: const EdgeInsets.only(top: 12),
+        child: ImageIcon(AssetImage(iconPath), size: 28),
       ),
-      SearchTab(),
-      BrowseTab(),
-      ProfileTab(),
-    ];
+      label: '',
+    );
   }
 
   @override
@@ -45,15 +46,6 @@ class _HomeState extends State<Home> {
           left: MediaQuery.of(context).size.width * 0.05,
           right: MediaQuery.of(context).size.width * 0.05,
           bottom: MediaQuery.of(context).padding.bottom + 10,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              offset: const Offset(0, 4),
-            ),
-          ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
@@ -77,16 +69,6 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(String iconPath) {
-    return BottomNavigationBarItem(
-      icon: Padding(
-        padding: const EdgeInsets.only(top: 12),
-        child: ImageIcon(AssetImage(iconPath), size: 28),
-      ),
-      label: '',
     );
   }
 }
