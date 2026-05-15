@@ -1,6 +1,7 @@
 class AppAssets {
   static const String onBoardingImageTwo = "assets/images/onBoarding_two.png";
-  static const String onBoardingImageThree = "assets/images/onBoarding_three.png";
+  static const String onBoardingImageThree =
+      "assets/images/onBoarding_three.png";
   static const String onBoardingImageFour = "assets/images/onBoarding_four.png";
   static const String onBoardingImageFive = "assets/images/onBoarding_five.png";
   static const String onBoardingImageSix = "assets/images/onBoarding_six.png";
@@ -34,4 +35,20 @@ class AppAssets {
   static const String ironMan = "assets/images/ironman.jpg";
   static const String darkKnight = "assets/images/thedarkknight.jpg";
   static const String searchIcon = "assets/images/search_icon.svg";
+  static const String screenshot1 = "assets/images/screenshot_1.jpg";
+  static const String screenshot2 = "assets/images/screenshot2.jpg";
+  static const String screenshot3 = "assets/images/screenshot3.jpg";
+  static const String babydriver = "assets/images/babydriver.jpg";
+  static const String avengers = "assets/images/avengers.jpg";
+  static const String avengers2 = "assets/images/avengers2.jpg";
+  static const String available = "assets/images/availablenow.png";
+  static const String watch = "assets/images/watchnow.png";
+  static const String samMendes = "assets/images/sammendes.jpg";
+  static const String cast1 = "assets/images/cast1.jpg";
+  static const String cast2 = "assets/images/cast2.jpg";
+  static const String cast3 = "assets/images/cast3.jpg";
+  static const String cast4 = "assets/images/cast4.jpg";
+  static const String favorite = "assets/images/favorite.png";
+  static const String time = "assets/images/time.png";
+  static const String star = "assets/images/star.png";
 }

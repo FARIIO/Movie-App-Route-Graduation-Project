@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_graduation_project_route/core/utils/app_assets.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/text_style.dart';
+import '../../movie_details_screen/movie_model.dart';
 import '../moviePoster.dart';
 
 class HomeTab extends StatefulWidget {
@@ -15,10 +17,25 @@ class _HomeTabState extends State<HomeTab> {
   late PageController _pageController;
   int _currentPage = 1;
 
-  final List<String> carouselPosters = [
-    'assets/images/babydriver.jpg',
-    'assets/images/sammendes.jpg',
-    'assets/images/Captain.jpg',
+  final List<MovieModel> carouselMovies = [
+    MovieModel(
+      imagePath: AppAssets.babydriver,
+      title: 'Baby Driver',
+      year: '2016',
+      rating: '7.7',
+    ),
+    MovieModel(
+      imagePath: AppAssets.movie1917,
+      title: '1917',
+      year: '2022',
+      rating: '7.7',
+    ),
+    MovieModel(
+      imagePath: AppAssets.captain,
+      title: 'Captain America',
+      year: '2022',
+      rating: '7.7',
+    ),
   ];
 
   @override
@@ -43,9 +60,9 @@ class _HomeTabState extends State<HomeTab> {
               Container(
                 height: screenHeight * 0.7,
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/sammendes.jpg'),
+                    image: AssetImage(AppAssets.samMendes),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -66,7 +83,7 @@ class _HomeTabState extends State<HomeTab> {
               Positioned(
                 top: screenHeight * 0.05,
                 child: Image.asset(
-                  'assets/images/availablenow.png',
+                  AppAssets.available,
                   width: screenWidth * 0.6,
                   fit: BoxFit.contain,
                 ),
@@ -80,7 +97,7 @@ class _HomeTabState extends State<HomeTab> {
                   controller: _pageController,
                   onPageChanged: (int page) =>
                       setState(() => _currentPage = page),
-                  itemCount: carouselPosters.length,
+                  itemCount: carouselMovies.length,
                   itemBuilder: (context, index) {
                     return AnimatedBuilder(
                       animation: _pageController,
@@ -98,7 +115,7 @@ class _HomeTabState extends State<HomeTab> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: MoviePoster(imagePath: carouselPosters[index]),
+                        child: MoviePoster(movie: carouselMovies[index]),
                       ),
                     );
                   },
@@ -108,7 +125,7 @@ class _HomeTabState extends State<HomeTab> {
               Positioned(
                 bottom: screenHeight * 0.05,
                 child: Image.asset(
-                  'assets/images/watchnow.png',
+                  AppAssets.watch,
                   width: screenWidth * 0.8,
                   fit: BoxFit.contain,
                 ),
@@ -135,9 +152,9 @@ class ActionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> actionPosters = [
-      'assets/images/Captain.jpg',
-      'assets/images/thedarkknight.jpg',
-      'assets/images/blackwidow.jpg',
+      AppAssets.captain,
+      AppAssets.darkKnight,
+      AppAssets.blackWidow,
     ];
 
     return Padding(
