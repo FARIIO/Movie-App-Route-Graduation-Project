@@ -28,7 +28,7 @@ class MoviePosterCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
               ),
               child: const Row(
-                children: [
+                children: <Widget>[
                   Text(
                     "7.7 ",
                     style: TextStyle(color: AppColors.whiteColor, fontSize: 10),
