@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import '../../features/home/data/models/movie_model.dart';
-import '../utils/models/movie_model.dart';
+import '../../ui/screens/movie_details_screen/movie_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
 
-  Future<List<MovieModel>> getMovies() async {
+  Future<List<Object?>> getMovies() async {
     try {
       final response = await _dio.get('https://yts.mx/api/v2/list_movies.json');
       if (response.statusCode == 200) {
@@ -18,3 +18,4 @@ class ApiService {
       throw Exception('Error: $e');
     }
   }
+}

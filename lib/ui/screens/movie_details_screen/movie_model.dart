@@ -24,6 +24,8 @@ class MovieModel {
     this.cast,
     this.genres,
   });
+
+  static Object? fromJson(movie) {}
 }
 
 class CastMember {
