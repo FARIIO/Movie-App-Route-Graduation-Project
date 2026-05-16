@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import '../../features/home/data/models/movie_model.dart';
 import '../../ui/screens/movie_details_screen/movie_model.dart';
 
 class ApiService {
