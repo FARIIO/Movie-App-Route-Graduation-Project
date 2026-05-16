@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app_graduation_project_route/core/utils/app_assets.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/auth/login_screen/widgets/custom_text_field.dart';
 
-import '../../home.dart';
+import '../../../movie_details_screen/app_data.dart';
 import '../../moviePoster.dart';
 
-class SearchTab extends StatelessWidget{
+class SearchTab extends StatelessWidget {
   List<String> moviePosters = [
     AppAssets.movie1917,
     AppAssets.docStrange,
@@ -20,11 +20,7 @@ class SearchTab extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        top: 20,
-        left: 16,
-        right: 16,
-      ),
+      padding: EdgeInsets.only(top: 20, left: 16, right: 16),
       child: Column(
         children: [
           CustomTextFormField(
@@ -44,14 +40,13 @@ class SearchTab extends StatelessWidget{
               ),
               itemCount: moviePosters.length,
               itemBuilder: (context, index) {
-                return MoviePoster(imagePath: moviePosters[index]);
+                return MoviePoster(movie: AppData.movies[index]);
+                ;
               },
             ),
-          )
+          ),
         ],
       ),
     );
   }
-  
-  
 }

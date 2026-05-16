@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app_graduation_project_route/core/api/api_service.dart';
+import 'package:movie_app_graduation_project_route/features/home/presentation/manager/home_cubit.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/browse_tab/browse_tab.dart';
 import 'package:movie_app_graduation_project_route/ui/screens/home_screen/tabs/search_tab/search_tab.dart';
 
@@ -15,12 +18,23 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+
   final List<Widget> tabs = [
     const HomeTab(),
     SearchTab(),
     BrowseTab(),
     ProfileTab(),
   ];
+
+  BottomNavigationBarItem _buildNavItem(String iconPath) {
+    return BottomNavigationBarItem(
+      icon: Padding(
+        padding: const EdgeInsets.only(top: 12),
+        child: ImageIcon(AssetImage(iconPath), size: 28),
+      ),
+      label: '',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +46,6 @@ class _HomeState extends State<Home> {
           left: MediaQuery.of(context).size.width * 0.05,
           right: MediaQuery.of(context).size.width * 0.05,
           bottom: MediaQuery.of(context).padding.bottom + 10,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
@@ -65,16 +69,6 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(String iconPath) {
-    return BottomNavigationBarItem(
-      icon: Padding(
-        padding: const EdgeInsets.only(top: 12),
-        child: ImageIcon(AssetImage(iconPath), size: 28),
-      ),
-      label: '',
     );
   }
 }
